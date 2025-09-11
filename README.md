@@ -18,6 +18,8 @@ OpenMRD is a **human‑readable, interoperable** file and folder standard for **
 
 ## Quick start (CLI)
 ```bash
+python3 -m venv openmrd
+source openmrd/bin/activate
 pip install -e .
 openmrd init my_scanner --template halbach_lowfield
 openmrd validate my_scanner/scanner.yaml
