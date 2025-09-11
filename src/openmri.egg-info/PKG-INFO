@@ -1,3 +1,15 @@
+Metadata-Version: 2.4
+Name: openmri
+Version: 0.1.0
+Summary: Open MRI Design Format (OpenMRD)
+Author: OpenMRD contributors
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pydantic>=2.0
+Requires-Dist: pyyaml>=6.0
+Dynamic: license-file
+
 # OpenMRD — Open MRI Design Format
 
 OpenMRD is a **human‑readable, interoperable** file and folder standard for **open-source MRI scanner design and fabrication**, with a focus on **low-field systems**. Think of it as doing for **hardware design** what **Pulseq** did for **sequence design**.

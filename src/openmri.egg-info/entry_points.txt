@@ -1,0 +1,2 @@
+[console_scripts]
+openmrd = openmrd.cli:main

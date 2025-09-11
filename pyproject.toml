@@ -1,0 +1,11 @@
+[project]
+name = "openmri"
+version = "0.1.0"
+description = "Open MRI Design Format (OpenMRD)"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [{name="OpenMRD contributors"}]
+dependencies = ["pydantic>=2.0", "pyyaml>=6.0"]
+
+[project.scripts]
+openmrd = "openmrd.cli:main"

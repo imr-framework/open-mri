@@ -1,0 +1,140 @@
+openmrd_version: '0.1'
+metadata:
+  name: LF-OpenMRD-Halbach-80mT
+  organization: Example Lab
+  license: MIT
+  contributors:
+  - A. Researcher
+  - B. Engineer
+  created: '2025-08-27'
+  description: Portable low-field MRI with Halbach magnet and cylindrical gradients.
+  pulseq_compatibility: Fully compatible via console API bridge
+coordinate_system:
+  convention: RAS
+  units: SI
+  scanner_to_lab_transform:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+subsystems:
+  magnet:
+    type: halbach
+    b0_t: 0.08
+    homogeneity_ppm_roi_mm:
+      ppm: 500
+      roi_mm: 120
+    shim_order_supported: 2
+    geometry:
+      outer_diameter_m: 0.42
+      inner_diameter_m: 0.22
+      length_m: 0.35
+      segments: 24
+    materials:
+    - N52 NdFeB
+    - Al frame
+    files:
+      cad:
+      - cad/magnet/halbach.step
+      fieldmap: fieldmaps/B0_map_2025-08-20.nii.gz
+      bom: bom/magnet_bom.csv
+  passive_shims:
+    basis: spherical-harmonics
+    elements:
+    - type: ring
+      radius_m: 0.15
+      z_m: 0.05
+      material: iron
+      mass_kg: 0.3
+    files:
+      cad:
+      - cad/shims/shim_ring.step
+  resistive_shims:
+    channels: 0
+  gradients:
+    form_factor: cylindrical
+    axes:
+      x:
+        gmax_mTm: 40
+        slew_Tm_s: 60
+        resistance_ohm: 1.2
+        inductance_mH: 2.8
+        cooling: air
+        files:
+          winding:
+          - cad/gradients/x_wind.json
+      y:
+        gmax_mTm: 40
+        slew_Tm_s: 60
+        resistance_ohm: 1.2
+        inductance_mH: 2.8
+        cooling: air
+        files:
+          winding:
+          - cad/gradients/y_wind.json
+      z:
+        gmax_mTm: 35
+        slew_Tm_s: 50
+        resistance_ohm: 1.5
+        inductance_mH: 3.1
+        cooling: air
+        files:
+          winding:
+          - cad/gradients/z_wind.json
+    files:
+      cad:
+      - cad/gradients/cyl_stack.step
+  rf:
+    tx:
+      type: solenoid
+      f0_hz: 3400000
+      q_factor: 120
+      impedance_ohm: 50
+      pmax_w: 200
+      files:
+        cad:
+        - cad/rf/tx_coil.step
+    rx:
+      type: solenoid
+      f0_hz: 3400000
+      q_factor: 180
+      impedance_ohm: 50
+      s_params_file: rf/sparams_rx.s2p
+      files:
+        cad:
+        - cad/rf/rx_coil.step
+    shielding: farraday_enclosure
+  spectrometer:
+    vendor_or_open: OpenSpecX
+    sampling_rate_hz: 1000000.0
+    bit_depth: 16
+    max_tx_freq_hz: 10000000.0
+  console:
+    os: Linux
+    api: Python gRPC
+    pulseq_support: true
+    latency_ms: 2.5
+testing:
+  qc:
+  - SNR on agar phantom
+  - Geometric accuracy cube
+  phantoms:
+  - agar_cylinder_v1.step
+  results:
+  - tests/qc_2025-08-21.md
+checksums:
+- path: fieldmaps/B0_map_2025-08-20.nii.gz
+  sha256: <fillme>
+extensions: {}

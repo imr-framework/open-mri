@@ -1,0 +1,26 @@
+version: 0.2
+scanner:
+  magnet:
+    type: C-type
+    field_strength_T: 0.2
+    geometry: open
+    vendor: OpenSource
+  gradients:
+    type: planar
+    max_strength_mTm: 30
+    linearity_percent: 90
+  rf_system:
+    transmit:
+      coil: birdcage
+      frequency_MHz: 8.5
+    receive:
+      coil: surface
+      channels: 4
+  fieldmap:
+    file: synthetic_fieldmap.npy
+  console:
+    vendor: OpenConsole
+    spectrometer: basic-nmr
+metadata:
+  author: "OpenMRD Community"
+  description: "Sample manifest with C-type magnet and planar gradients."

@@ -1,0 +1,512 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://openmrd.org/schema/scanner-0.1.json",
+  "title": "OpenMRD Scanner Manifest",
+  "type": "object",
+  "required": [
+    "openmrd_version",
+    "metadata",
+    "coordinate_system",
+    "subsystems"
+  ],
+  "properties": {
+    "openmrd_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "name",
+        "organization",
+        "license",
+        "contributors",
+        "created"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "organization": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "contributors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pulseq_compatibility": {
+          "type": "string"
+        }
+      }
+    },
+    "coordinate_system": {
+      "type": "object",
+      "required": [
+        "convention",
+        "units"
+      ],
+      "properties": {
+        "convention": {
+          "type": "string",
+          "enum": [
+            "RAS",
+            "LPS"
+          ]
+        },
+        "units": {
+          "type": "string",
+          "enum": [
+            "SI"
+          ]
+        },
+        "scanner_to_lab_transform": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 16,
+          "maxItems": 16
+        }
+      }
+    },
+    "subsystems": {
+      "type": "object",
+      "required": [
+        "magnet",
+        "gradients",
+        "rf",
+        "spectrometer",
+        "console"
+      ],
+      "properties": {
+        "magnet": {
+          "type": "object",
+          "required": [
+            "type",
+            "b0_t",
+            "homogeneity_ppm_roi_mm",
+            "geometry",
+            "files"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "halbach",
+                "c-frame",
+                "h-frame",
+                "solenoid",
+                "yoke-other"
+              ]
+            },
+            "b0_t": {
+              "type": "number"
+            },
+            "homogeneity_ppm_roi_mm": {
+              "type": "object",
+              "required": [
+                "ppm",
+                "roi_mm"
+              ],
+              "properties": {
+                "ppm": {
+                  "type": "number"
+                },
+                "roi_mm": {
+                  "type": "number"
+                }
+              }
+            },
+            "shim_order_supported": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "geometry": {
+              "type": "object"
+            },
+            "materials": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "cad": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "fieldmap": {
+                  "type": "string"
+                },
+                "bom": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "passive_shims": {
+          "type": "object",
+          "properties": {
+            "basis": {
+              "type": "string",
+              "enum": [
+                "spherical-harmonics",
+                "arbitrary"
+              ]
+            },
+            "elements": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "cad": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "resistive_shims": {
+          "type": "object",
+          "properties": {
+            "channels": {
+              "type": "integer"
+            },
+            "max_current_a": {
+              "type": "number"
+            },
+            "spherical_orders": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "wiring": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "gradients": {
+          "type": "object",
+          "required": [
+            "form_factor",
+            "axes"
+          ],
+          "properties": {
+            "form_factor": {
+              "type": "string",
+              "enum": [
+                "cylindrical",
+                "planar",
+                "other"
+              ]
+            },
+            "axes": {
+              "type": "object",
+              "required": [
+                "x",
+                "y",
+                "z"
+              ],
+              "properties": {
+                "x": {
+                  "$ref": "#/definitions/grad_axis"
+                },
+                "y": {
+                  "$ref": "#/definitions/grad_axis"
+                },
+                "z": {
+                  "$ref": "#/definitions/grad_axis"
+                }
+              }
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "cad": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "rf": {
+          "type": "object",
+          "required": [
+            "tx",
+            "rx"
+          ],
+          "properties": {
+            "tx": {
+              "$ref": "#/definitions/rf_channel"
+            },
+            "rx": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/rf_channel"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/rf_channel"
+                  }
+                }
+              ]
+            },
+            "shielding": {
+              "type": "string",
+              "enum": [
+                "none",
+                "farraday_enclosure",
+                "active"
+              ]
+            }
+          }
+        },
+        "spectrometer": {
+          "type": "object",
+          "required": [
+            "vendor_or_open",
+            "sampling_rate_hz",
+            "bit_depth",
+            "max_tx_freq_hz"
+          ],
+          "properties": {
+            "vendor_or_open": {
+              "type": "string"
+            },
+            "sampling_rate_hz": {
+              "type": "number"
+            },
+            "bit_depth": {
+              "type": "integer"
+            },
+            "max_tx_freq_hz": {
+              "type": "number"
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "firmware": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "console": {
+          "type": "object",
+          "required": [
+            "os",
+            "api",
+            "pulseq_support"
+          ],
+          "properties": {
+            "os": {
+              "type": "string"
+            },
+            "api": {
+              "type": "string"
+            },
+            "pulseq_support": {
+              "type": "boolean"
+            },
+            "latency_ms": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "properties": {
+        "qc": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "phantoms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "emissions_notes": {
+          "type": "string"
+        }
+      }
+    },
+    "checksums": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "definitions": {
+    "grad_axis": {
+      "type": "object",
+      "required": [
+        "gmax_mTm",
+        "slew_Tm_s",
+        "resistance_ohm",
+        "inductance_mH"
+      ],
+      "properties": {
+        "gmax_mTm": {
+          "type": "number"
+        },
+        "slew_Tm_s": {
+          "type": "number"
+        },
+        "resistance_ohm": {
+          "type": "number"
+        },
+        "inductance_mH": {
+          "type": "number"
+        },
+        "cooling": {
+          "type": "string",
+          "enum": [
+            "air",
+            "water",
+            "oil",
+            "none"
+          ]
+        },
+        "dqdt_limits_T_s": {
+          "type": "number"
+        },
+        "files": {
+          "type": "object",
+          "properties": {
+            "winding": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "rf_channel": {
+      "type": "object",
+      "required": [
+        "type",
+        "f0_hz",
+        "q_factor",
+        "impedance_ohm"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "solenoid",
+            "birdcage",
+            "saddle",
+            "surface",
+            "array",
+            "other"
+          ]
+        },
+        "f0_hz": {
+          "type": "number"
+        },
+        "q_factor": {
+          "type": "number"
+        },
+        "impedance_ohm": {
+          "type": "number"
+        },
+        "pmax_w": {
+          "type": "number"
+        },
+        "s_params_file": {
+          "type": "string"
+        },
+        "match_network": {
+          "type": "string"
+        },
+        "files": {
+          "type": "object",
+          "properties": {
+            "cad": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
