@@ -1,6 +1,6 @@
-# OpenMRD — Open MRI Design Format
+# OpenMRI — Open MRI Design, Fabrication and Testing Format
 
-OpenMRD is a **human‑readable, interoperable** file and folder standard for **open-source MRI scanner design and fabrication**, with a focus on **low-field systems**. Think of it as doing for **hardware design** what **Pulseq** did for **sequence design**.
+OpenMRI is a **human‑readable, interoperable** file and folder standard for **open-source MRI scanner design, fabrication and testing **, with a focus on **low-field systems**. Think of it as doing for **MR scanner design** what **Pulseq** did for **sequence design**.
 
 ## Goals
 - Portable designs across labs and vendors.
@@ -10,7 +10,7 @@ OpenMRD is a **human‑readable, interoperable** file and folder standard for **
 - Validation & versioning baked in.
 
 ## Core concepts
-- A repository (or zip) is an **OpenMRD package**.
+- A repository (or zip) is an **OpenMRI package**.
 - The package has a top-level manifest: `scanner.yaml`.
 - All CAD/fieldmaps/BOM/test data live in subfolders and are referenced by relative paths with checksums.
 - JSON Schema + Pydantic validate the manifest.

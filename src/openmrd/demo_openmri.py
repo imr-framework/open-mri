@@ -7,7 +7,7 @@ from src.openmrd.models import ScannerManifest, GradAxis, Gradients, RFChannel, 
 
 TEMPLATES = {
     "halbach_lowfield": {
-        "metadata": {"name":"LF-OpenMRD-Halbach","organization":"MyLab","license":"MIT","contributors":["you"],"created":"2025-08-27","description":"Low-field Halbach design"},
+        "metadata": {"name":"LF-OpenMRD-Halbach","organization":"MyLab","license":"MIT","contributors":["Researcher1", "Engineer1"],"created":"2025-08-27","description":"Low-field Halbach design"},
         "subsystems": {
             "magnet": {"type":"halbach","b0_t":0.08,"homogeneity_ppm_roi_mm":{"ppm":500,"roi_mm":120},"geometry":{},"materials":["NdFeB"],"files":{}},
             "gradients": {"form_factor":"cylindrical","axes":{
