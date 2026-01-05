@@ -1,13 +1,13 @@
 openmrd_version: '0.1'
 metadata:
-  name: LF-OpenMRD-Halbach
-  organization: MyLab
+  name: C-Type-OpenMRD
+  organization: DIY MRI
   license: MIT
   contributors:
   - Researcher1
   - Engineer1
   created: '2025-08-27'
-  description: Low-field Halbach design
+  description: C-type permanent magnet design with N52 discs
   links: null
   pulseq_compatibility: null
 coordinate_system:
@@ -32,42 +32,46 @@ coordinate_system:
   - 1
 subsystems:
   magnet:
-    type: halbach
-    b0_t: 0.08
+    type: c_type
+    b0_t: 0.35
     homogeneity_ppm_roi_mm:
-      ppm: 500.0
-      roi_mm: 120.0
+      ppm: 200.0
+      roi_mm: 100.0
     shim_order_supported: 0
-    geometry: {}
+    geometry:
+      disc_diameter_inches: 8.0
+      disc_thickness_inches: 2.0
+      separation_cm: 9.8
     materials:
-    - NdFeB
+    - N52 NdFeB
+    - AISI 1018 Steel
     files: {}
   passive_shims: null
   resistive_shims: null
   gradients:
-    form_factor: cylindrical
+    form_factor: biplanar
     axes:
       x:
-        gmax_mTm: 40.0
-        slew_Tm_s: 60.0
-        resistance_ohm: 1.2
-        inductance_mH: 2.8
+        gmax_mTm: 25.0
+        slew_Tm_s: 35.0
+        resistance_ohm: 2.5
+        inductance_mH: 5.2
         cooling: air
         dqdt_limits_T_s: null
         files: {}
       y:
-        gmax_mTm: 40.0
-        slew_Tm_s: 60.0
-        resistance_ohm: 1.2
-        inductance_mH: 2.8
+        gmax_mTm: 25.0
+        slew_Tm_s: 35.0
+        resistance_ohm: 2.5
+        inductance_mH: 5.2
         cooling: air
         dqdt_limits_T_s: null
         files: {}
       z:
-        gmax_mTm: 35.0
-        slew_Tm_s: 50.0
-        resistance_ohm: 1.5
-        inductance_mH: 3.1
+        gmax_mTm: 20.0
+        slew_Tm_s: 30.0
+        resistance_ohm: 3.0
+        inductance_mH: 6.1
         cooling: air
         dqdt_limits_T_s: null
         files: {}
@@ -75,8 +79,8 @@ subsystems:
   rf:
     tx:
       type: solenoid
-      f0_hz: 3200000.0
-      q_factor: 120.0
+      f0_hz: 14900000.0
+      q_factor: 100.0
       impedance_ohm: 50.0
       pmax_w: null
       s_params_file: null
@@ -84,8 +88,8 @@ subsystems:
       files: {}
     rx:
       type: solenoid
-      f0_hz: 3200000.0
-      q_factor: 180.0
+      f0_hz: 14900000.0
+      q_factor: 150.0
       impedance_ohm: 50.0
       pmax_w: null
       s_params_file: null
@@ -93,16 +97,16 @@ subsystems:
       files: {}
     shielding: null
   spectrometer:
-    vendor_or_open: OpenSpecX
-    sampling_rate_hz: 1000000.0
+    model: RedPitaya-122
+    sampling_rate_hz: 122000000.0
     bit_depth: 16
-    max_tx_freq_hz: 10000000.0
+    max_tx_freq_hz: 50000000.0
     files: {}
   console:
     os: Linux
     api: Python gRPC
     pulseq_support: true
-    latency_ms: 2.5
+    latency_ms: 3.0
 testing: null
 security: null
 checksums: null

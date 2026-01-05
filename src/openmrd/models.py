@@ -45,7 +45,7 @@ class RF(BaseModel):
     shielding: Optional[str] = None
 
 class Spectrometer(BaseModel):
-    vendor_or_open: str
+    model: str
     sampling_rate_hz: float
     bit_depth: int
     max_tx_freq_hz: float
