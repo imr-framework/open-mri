@@ -36,7 +36,7 @@ subsystems:
     b0_t: 0.35
     homogeneity_ppm_roi_mm:
       ppm: 200.0
-      roi_mm: 100.0
+      roi_mm: 70.0
     shim_order_supported: 0
     geometry:
       disc_diameter_inches: 8.0
@@ -45,7 +45,13 @@ subsystems:
     materials:
     - N52 NdFeB
     - AISI 1018 Steel
-    files: {}
+    files:
+      yoke.step:
+      - cad/yoke.step
+      magnet_positions.csv:
+      - magnet/magnet_positions.csv
+      magnet.step:
+      - cad/magnet.step
   passive_shims: null
   resistive_shims: null
   gradients:

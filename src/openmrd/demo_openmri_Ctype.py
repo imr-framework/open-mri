@@ -24,7 +24,7 @@ TEMPLATES = {
     "c_type_permanent": {
         "metadata": {"name":"C-Type-OpenMRD","organization":"DIY MRI","license":"MIT","contributors":["Researcher1", "Engineer1"],"created":"2025-08-27","description":"C-type permanent magnet design with N52 discs"},
         "subsystems": {
-            "magnet": {"type":"c_type","b0_t":0.35,"homogeneity_ppm_roi_mm":{"ppm":200,"roi_mm":100},"geometry":{"disc_diameter_inches":8,"disc_thickness_inches":2,"separation_cm":9.8},"materials":["N52 NdFeB","AISI 1018 Steel"],"files":{}},
+            "magnet": {"type":"c_type","b0_t":0.35,"homogeneity_ppm_roi_mm":{"ppm":200,"roi_mm":70},"geometry":{"disc_diameter_inches":8,"disc_thickness_inches":2,"separation_cm":9.8},"materials":["N52 NdFeB","AISI 1018 Steel"],"files":{"yoke.step":["cad/yoke.step"],"magnet_positions.csv":["magnet/magnet_positions.csv"], "magnet.step":["cad/magnet.step"]}},
             "gradients": {"form_factor":"biplanar","axes":{
                 "x":{"gmax_mTm":25,"slew_Tm_s":35,"resistance_ohm":2.5,"inductance_mH":5.2},
                 "y":{"gmax_mTm":25,"slew_Tm_s":35,"resistance_ohm":2.5,"inductance_mH":5.2},
