@@ -18,7 +18,7 @@ Setup Instructions:
 import argparse, os, sys, json, yaml
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from src.openmrd.models import ScannerManifest, GradAxis, Gradients, RFChannel, RF, Magnet, Spectrometer, Console, Subsystems, Metadata
+from src.openmrd.models import ReconstructionManifest, ScannerManifest, GradAxis, Gradients, RFChannel, RF, Magnet, Spectrometer, Console, Subsystems, Metadata
 
 TEMPLATES = {
     "c_type_permanent": {
@@ -77,7 +77,8 @@ def init_cmd(args):
                                                        axes={k: GradAxis(**v) for k,v in cfg["subsystems"]["gradients"]["axes"].items()}),
                                    rf=RF(tx=RFChannel(**cfg["subsystems"]["rf"]["tx"]), rx=RFChannel(**cfg["subsystems"]["rf"]["rx"])),
                                    spectrometer=Spectrometer(**cfg["subsystems"]["spectrometer"]),
-                                   console=Console(**cfg["subsystems"]["console"])
+                                   console=Console(**cfg["subsystems"]["console"]),
+                                   recon_pipeline=ReconstructionManifest(openmrd_version="0.1",metadata=Metadata(**cfg["metadata"]),reconstruction_parameters={"algorithm":"GRAPPA","acceleration_factor":2})
                                ))
     
     # Write manifest to YAML file

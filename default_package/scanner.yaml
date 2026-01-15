@@ -113,6 +113,46 @@ subsystems:
     api: Python gRPC
     pulseq_support: true
     latency_ms: 3.0
+  recon_pipeline:
+    openmrd_version: '0.1'
+    metadata:
+      name: C-Type-OpenMRD
+      organization: DIY MRI
+      license: MIT
+      contributors:
+      - Researcher1
+      - Engineer1
+      created: '2025-08-27'
+      description: C-type permanent magnet design with N52 discs
+      links: null
+      pulseq_compatibility: null
+    coordinate_system:
+      convention: RAS
+      units: SI
+      scanner_to_lab_transform:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+    reconstruction_parameters:
+      algorithm: GRAPPA
+      acceleration_factor: 2
+    testing: null
+    security: null
+    checksums: null
+    extensions: null
 testing: null
 security: null
 checksums: null

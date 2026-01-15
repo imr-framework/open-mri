@@ -57,14 +57,11 @@ class Console(BaseModel):
     pulseq_support: bool = True
     latency_ms: Optional[float] = None
 
-class Subsystems(BaseModel):
-    magnet: Magnet
-    passive_shims: Optional[dict] = None
-    resistive_shims: Optional[dict] = None
-    gradients: Gradients
-    rf: RF
-    spectrometer: Spectrometer
-    console: Console
+
+
+
+
+
 
 class Metadata(BaseModel):
     name: str
@@ -81,6 +78,27 @@ class CoordinateSystem(BaseModel):
     units: str = "SI"
     scanner_to_lab_transform: List[float] = Field(default_factory=lambda: [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1])
 
+class ReconstructionManifest(BaseModel):
+    openmrd_version: str = "0.1"
+    metadata: Metadata
+    coordinate_system: CoordinateSystem = CoordinateSystem()
+    reconstruction_parameters: dict
+    testing: Optional[dict] = None
+    security: Optional[dict] = None
+    checksums: Optional[List[dict]] = None
+    extensions: Optional[dict] = None
+
+class Subsystems(BaseModel):
+    magnet: Magnet
+    passive_shims: Optional[dict] = None
+    resistive_shims: Optional[dict] = None
+    gradients: Gradients
+    rf: RF
+    spectrometer: Spectrometer
+    console: Console
+    recon_pipeline: ReconstructionManifest = None
+
+
 class ScannerManifest(BaseModel):
     openmrd_version: str = "0.1"
     metadata: Metadata
@@ -90,3 +108,4 @@ class ScannerManifest(BaseModel):
     security: Optional[dict] = None
     checksums: Optional[List[dict]] = None
     extensions: Optional[dict] = None
+
