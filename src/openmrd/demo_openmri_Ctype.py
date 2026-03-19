@@ -18,7 +18,7 @@ Setup Instructions:
 import argparse, os, sys, json, yaml
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-from src.openmrd.models import ReconstructionManifest, ScannerManifest, GradAxis, Gradients, RFChannel, RF, Magnet, Spectrometer, Console, Subsystems, Metadata
+from src.openmrd.models import *
 
 TEMPLATES = {
     "c_type_permanent": {
@@ -30,8 +30,14 @@ TEMPLATES = {
                 "y":{"gmax_mTm":25,"slew_Tm_s":35,"resistance_ohm":2.5,"inductance_mH":5.2},
                 "z":{"gmax_mTm":20,"slew_Tm_s":30,"resistance_ohm":3.0,"inductance_mH":6.1}
             }},
-            "rf": {"tx":{"type":"solenoid","f0_hz":14.9e6,"q_factor":100,"impedance_ohm":50},
-                   "rx":{"type":"solenoid","f0_hz":14.9e6,"q_factor":150,"impedance_ohm":50}},
+            "rf": {"tx":{"type":"solenoid","f0_hz":11.5e6,"q_factor":100,"impedance_ohm":50},
+                   "rx":{"type":"solenoid","f0_hz":11.5e6,"q_factor":150,"impedance_ohm":50},
+                   "shielding":"copper"},
+            "recon_pipeline": {
+                "openmrd_version": "0.1",
+                "metadata": {"name":"C-Type-OpenMRD","organization":"DIY MRI","license":"MIT","contributors":["Researcher1", "Engineer1"],"created":"2025-08-27","description":"C-type permanent magnet design with N52 discs"},
+                "reconstruction_parameters": {"algorithm":"GRAPPA","acceleration_factor":2}
+            },
             "spectrometer":{"model":"RedPitaya-122","sampling_rate_hz":122e6,"bit_depth":16,"max_tx_freq_hz":50e6},
             "console":{"name":"mri4all","os":"Linux","api":"Python gRPC","pulseq_support":True,"latency_ms":3.0}
         }

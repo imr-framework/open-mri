@@ -1,0 +1,16 @@
+[submodule "src/mapping_robot"]
+	path = src/mapping_robot
+	url = https://github.com/imr-framework/mapping_robot/
+	branch = dev_ws_2026
+[submodule "src/passive_shimming"]
+	path = src/passive_shimming
+	url = https://github.com/imr-framework/passive_shimming
+	branch = dev_ws_2026
+[submodule "src/pyCoilGen"]
+	path = src/pyCoilGen
+	url = https://github.com/sairamgeethanath/pyCoilGen
+	branch = dev_ws_2026
+[submodule "src/console"]
+	path = src/console
+	url = https://github.com/sairamgeethanath/console
+	branch = dev_ws_2026

@@ -212,10 +212,14 @@ This repo uses submodules. Contributions may involve:
 # Step-by-Step Workshop Contribution Guide
 
 ## 1. Fork
-Click Fork on GitHub
+Click Fork on GitHub - https://github.com/imr-framework/open-mri/
 
 ## 2. Clone
+```bash
 git clone --recurse-submodules <your-fork-url>
+cd <repo-name>
+git checkout dev_ws_2026
+```
 
 ## 3. Branch
 git checkout -b my-feature
