@@ -221,7 +221,7 @@ cd <repo-name>
 git checkout dev_ws_2026
 ```
 
-## 3. Branch
+## 3. Branch (optional)
 git checkout -b my-feature
 
 ## 4A. Edit Main Repo
