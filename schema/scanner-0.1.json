@@ -226,18 +226,9 @@
         "gradients": {
           "type": "object",
           "required": [
-            "form_factor",
             "axes"
           ],
           "properties": {
-            "form_factor": {
-              "type": "string",
-              "enum": [
-                "cylindrical",
-                "planar",
-                "other"
-              ]
-            },
             "axes": {
               "type": "object",
               "required": [
@@ -414,12 +405,21 @@
     "grad_axis": {
       "type": "object",
       "required": [
+        "form_factor",
         "gmax_mTm",
         "slew_Tm_s",
         "resistance_ohm",
         "inductance_mH"
       ],
       "properties": {
+        "form_factor": {
+          "type": "string",
+          "enum": [
+            "cylindrical",
+            "planar",
+            "other"
+          ]
+        },
         "gmax_mTm": {
           "type": "number"
         },
