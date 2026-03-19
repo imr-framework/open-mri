@@ -220,6 +220,10 @@ git clone --recurse-submodules <your-fork-url>
 cd <repo-name>
 git checkout dev_ws_2026
 ```
+if your submodules show up empty, please run 
+```bash
+git submodule update --init --recursive
+```
 
 ## 3. Branch (optional)
 git checkout -b my-feature
