@@ -231,11 +231,6 @@
           "properties": {
             "axes": {
               "type": "object",
-              "required": [
-                "x",
-                "y",
-                "z"
-              ],
               "properties": {
                 "x": {
                   "$ref": "#/definitions/grad_axis"
@@ -244,6 +239,9 @@
                   "$ref": "#/definitions/grad_axis"
                 },
                 "z": {
+                  "$ref": "#/definitions/grad_axis"
+                },
+                "other": {
                   "$ref": "#/definitions/grad_axis"
                 }
               }
