@@ -406,7 +406,7 @@
       "type": "object",
       "required": [
         "form_factor",
-        "gmax_mTm",
+        "gmax_mT_m",
         "slew_Tm_s",
         "resistance_ohm",
         "inductance_mH"
@@ -420,7 +420,7 @@
             "other"
           ]
         },
-        "gmax_mTm": {
+        "gmax_mT_m": {
           "type": "number"
         },
         "slew_Tm_s": {
