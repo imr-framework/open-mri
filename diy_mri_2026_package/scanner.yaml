@@ -85,7 +85,7 @@ subsystems:
   rf:
     tx:
       type: solenoid
-      f0_hz: 14900000.0
+      f0_hz: 11500000.0
       q_factor: 100.0
       impedance_ohm: 50.0
       pmax_w: null
@@ -94,7 +94,7 @@ subsystems:
       files: {}
     rx:
       type: solenoid
-      f0_hz: 14900000.0
+      f0_hz: 11500000.0
       q_factor: 150.0
       impedance_ohm: 50.0
       pmax_w: null

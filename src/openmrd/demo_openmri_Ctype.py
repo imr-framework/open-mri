@@ -129,7 +129,7 @@ def main():
     """
     # Initialize with default arguments
     class Args:
-        package = "default_package"
+        package = "diy_mri_2026_package"
         template = "c_type_permanent"
         manifest = os.path.join(package, "scanner.yaml")
         func = None
