@@ -1,4 +1,4 @@
-# OpenMRI — Open MRI Design, Fabrication and Testing Format
+# OpenMRI — Open MRI Design, Simulation, Fabrication and Testing Format
 
 OpenMRI is a **human‑readable, interoperable** file and folder standard for **open-source MRI scanner design, fabrication and testing**, with a focus on **low-field systems**. Think of it as doing for **MR scanner design** what **Pulseq** did for **sequence design**.
 
