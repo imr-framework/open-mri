@@ -3,7 +3,7 @@ import argparse, os, sys, json, yaml
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from src.openmrd.models import ScannerManifest, GradAxis, Gradients, RFChannel, RF, Magnet, Spectrometer, Console, Subsystems, Metadata
+from src.openmrd.models import *
 
 TEMPLATES = {
     "halbach_lowfield": {

@@ -39,7 +39,13 @@ TEMPLATES = {
                 "reconstruction_parameters": {"algorithm":"GRAPPA","acceleration_factor":2}
             },
             "spectrometer":{"model":"RedPitaya-122","sampling_rate_hz":122e6,"bit_depth":16,"max_tx_freq_hz":50e6},
-            "console":{"name":"mri4all","os":"Linux","api":"Python gRPC","pulseq_support":True,"latency_ms":3.0}
+            "console":{"name":"mri4all","os":"Linux","api":"Python gRPC","pulseq_support":True,"latency_ms":3.0},
+            "recon": {"name": "open-lf-recon","framework": "Python","backend": "PyTorch","device": "cuda","latency_ms": 12.5,
+                "batch_size": 2,"input_format": "kspace","output_format": "image","complex_data": true,"use_kspace_recon": true,
+                "use_classical_denoising": true,"use_motion_correction": false,"use_super_resolution": true,"use_dl_reconstruction": true,
+
+                "model_name": "3D-UNet-SRR","model_checkpoint": "models/srr_unet.pth","physics_informed": true,"coil_sensitivity_maps": true,"field_strength": 0.05
+            }
         }
     }
 }
