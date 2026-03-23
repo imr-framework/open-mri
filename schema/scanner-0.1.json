@@ -226,25 +226,11 @@
         "gradients": {
           "type": "object",
           "required": [
-            "form_factor",
             "axes"
           ],
           "properties": {
-            "form_factor": {
-              "type": "string",
-              "enum": [
-                "cylindrical",
-                "planar",
-                "other"
-              ]
-            },
             "axes": {
               "type": "object",
-              "required": [
-                "x",
-                "y",
-                "z"
-              ],
               "properties": {
                 "x": {
                   "$ref": "#/definitions/grad_axis"
@@ -253,6 +239,9 @@
                   "$ref": "#/definitions/grad_axis"
                 },
                 "z": {
+                  "$ref": "#/definitions/grad_axis"
+                },
+                "other": {
                   "$ref": "#/definitions/grad_axis"
                 }
               }
@@ -414,13 +403,30 @@
     "grad_axis": {
       "type": "object",
       "required": [
-        "gmax_mTm",
+        "form_factor",
+        "gmax_mT_m",
         "slew_Tm_s",
         "resistance_ohm",
-        "inductance_mH"
+        "inductance_mH",
+        "imax_A",
+        "umax_V"
       ],
       "properties": {
-        "gmax_mTm": {
+        "form_factor": {
+          "type": "string",
+          "enum": [
+            "cylindrical",
+            "planar",
+            "other"
+          ]
+        },
+        "imax_A": {
+          "type": "number"
+        },
+        "umax_V": {
+          "type": "number"
+        },
+        "gmax_mT_m": {
           "type": "number"
         },
         "slew_Tm_s": {
@@ -443,6 +449,12 @@
         },
         "dqdt_limits_T_s": {
           "type": "number"
+        },
+        "wiresize_awg_mm_other": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ]
         },
         "files": {
           "type": "object",
