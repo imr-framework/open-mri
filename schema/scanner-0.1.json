@@ -442,6 +442,12 @@
         "dqdt_limits_T_s": {
           "type": "number"
         },
+        "wiresize_awg_mm_other": {
+          "oneOf": [
+            {"type": "number"},
+            {"type": "string"}
+          ]
+        },
         "files": {
           "type": "object",
           "properties": {
