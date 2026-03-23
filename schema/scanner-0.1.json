@@ -407,7 +407,9 @@
         "gmax_mT_m",
         "slew_Tm_s",
         "resistance_ohm",
-        "inductance_mH"
+        "inductance_mH",
+        "imax_A",
+        "umax_V"
       ],
       "properties": {
         "form_factor": {
@@ -417,6 +419,12 @@
             "planar",
             "other"
           ]
+        },
+        "imax_A": {
+          "type": "number"
+        },
+        "umax_V": {
+          "type": "number"
         },
         "gmax_mT_m": {
           "type": "number"
