@@ -1,0 +1,323 @@
+openmrd_version: '0.1'
+metadata:
+  name: H-Type MRI
+  organization: DIY MRI
+  license: MIT
+  contributors:
+  - Researcher1
+  - Engineer1
+  created: '2026-01-01'
+  description: Parametric MRI scanner (SI units)
+coordinate_system:
+  convention: RAS
+  units: SI
+  scanner_to_lab_transform:
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+  - 0
+  - 0
+  - 0
+  - 0
+  - 1
+subsystems:
+  magnet:
+    type: h_type
+    b0_t: 0.5
+    homogeneity_ppm_roi_mm:
+      ppm: 100.0
+      roi_m: 0.09
+    shim_order_supported: 0
+    geometry:
+      m_dia: 0.25
+      m_thick: 0.06
+      pole_thick: 0.06
+      gap: 0.12
+      yoke_w: 0.35
+      yoke_t: 0.1
+    materials:
+    - Air
+    - Permanent_Magnet
+    - Steel_1018
+    magnetization:
+      direction:
+      - 0.0
+      - 0.0
+      - 1.0
+      magnitude: 1154000.0
+    files: {}
+  gradients:
+    form_factor: biplanar
+    axes:
+      x:
+        gmax_Tpm: 0.025
+        slew_Tpm_s: 35.0
+        resistance_ohm: 2.5
+        inductance_H: 0.0052
+        cooling: air
+        dqdt_limits_T_s: null
+        target:
+          field_component: Bz
+          gradient_axis: x
+          linearity_ppm: 500.0
+          roi_radius_m: 0.05
+          efficiency_Tpm_per_A: 0.0025
+        geometry:
+          form_factor: biplanar
+          topology: rectangular_loop
+          roi_radius_m: 0.05
+          active_length_m: null
+          plane_gap_m: 0.14
+          plane_width_m: 0.24
+          plane_height_m: 0.24
+          loop_offset_m: 0.055
+          cylinder_radius_m: null
+          cylinder_length_m: null
+          saddle_angle_deg: 70.0
+          turns: 1
+          layers: 1
+          segments_per_turn: 64
+          conductor_spacing_m: null
+          return_path: auto
+        conductor:
+          material: Copper
+          conductivity_Spm: 58000000.0
+          current_A: 10.0
+          max_current_A: 20.0
+          voltage_limit_V: null
+          wire_radius_m: 0.003
+          trace_width_m: null
+          trace_thickness_m: null
+          insulation_thickness_m: 0.0002
+        simulation:
+          engine: elmerfem
+          physics: magnetostatic_current_density
+          air_padding_m: 0.2
+          mesh_min_m: 0.003
+          mesh_max_m: 0.04
+          boundary_condition: magnetic_insulation
+          result_fields:
+          - B
+          - H
+          - J
+          evaluate_roi: true
+        files: {}
+      y:
+        gmax_Tpm: 0.025
+        slew_Tpm_s: 35.0
+        resistance_ohm: 2.5
+        inductance_H: 0.0052
+        cooling: air
+        dqdt_limits_T_s: null
+        target:
+          field_component: Bz
+          gradient_axis: y
+          linearity_ppm: 500.0
+          roi_radius_m: 0.05
+          efficiency_Tpm_per_A: 0.0025
+        geometry:
+          form_factor: biplanar
+          topology: rectangular_loop
+          roi_radius_m: 0.05
+          active_length_m: null
+          plane_gap_m: 0.14
+          plane_width_m: 0.24
+          plane_height_m: 0.24
+          loop_offset_m: 0.055
+          cylinder_radius_m: null
+          cylinder_length_m: null
+          saddle_angle_deg: 70.0
+          turns: 1
+          layers: 1
+          segments_per_turn: 64
+          conductor_spacing_m: null
+          return_path: auto
+        conductor:
+          material: Copper
+          conductivity_Spm: 58000000.0
+          current_A: 10.0
+          max_current_A: 20.0
+          voltage_limit_V: null
+          wire_radius_m: 0.003
+          trace_width_m: null
+          trace_thickness_m: null
+          insulation_thickness_m: 0.0002
+        simulation:
+          engine: elmerfem
+          physics: magnetostatic_current_density
+          air_padding_m: 0.2
+          mesh_min_m: 0.003
+          mesh_max_m: 0.04
+          boundary_condition: magnetic_insulation
+          result_fields:
+          - B
+          - H
+          - J
+          evaluate_roi: true
+        files: {}
+      z:
+        gmax_Tpm: 0.02
+        slew_Tpm_s: 30.0
+        resistance_ohm: 3.0
+        inductance_H: 0.0061
+        cooling: air
+        dqdt_limits_T_s: null
+        target:
+          field_component: Bz
+          gradient_axis: z
+          linearity_ppm: 500.0
+          roi_radius_m: 0.05
+          efficiency_Tpm_per_A: 0.002
+        geometry:
+          form_factor: biplanar
+          topology: maxwell_pair
+          roi_radius_m: 0.05
+          active_length_m: null
+          plane_gap_m: 0.14
+          plane_width_m: 0.24
+          plane_height_m: 0.24
+          loop_offset_m: 0.0
+          cylinder_radius_m: null
+          cylinder_length_m: null
+          saddle_angle_deg: 70.0
+          turns: 1
+          layers: 1
+          segments_per_turn: 64
+          conductor_spacing_m: null
+          return_path: auto
+        conductor:
+          material: Copper
+          conductivity_Spm: 58000000.0
+          current_A: 10.0
+          max_current_A: 20.0
+          voltage_limit_V: null
+          wire_radius_m: 0.003
+          trace_width_m: null
+          trace_thickness_m: null
+          insulation_thickness_m: 0.0002
+        simulation:
+          engine: elmerfem
+          physics: magnetostatic_current_density
+          air_padding_m: 0.2
+          mesh_min_m: 0.003
+          mesh_max_m: 0.04
+          boundary_condition: magnetic_insulation
+          result_fields:
+          - B
+          - H
+          - J
+          evaluate_roi: true
+        files: {}
+    geometry:
+      form_factor: biplanar
+      topology: rectangular_loop
+      roi_radius_m: 0.05
+      active_length_m: 0.16
+      plane_gap_m: 0.15
+      plane_width_m: 0.24
+      plane_height_m: 0.24
+      loop_offset_m: 0.055
+      cylinder_radius_m: null
+      cylinder_length_m: null
+      saddle_angle_deg: 70.0
+      turns: 1
+      layers: 1
+      segments_per_turn: 64
+      conductor_spacing_m: 0.006
+      return_path: auto
+    conductor:
+      material: Copper
+      conductivity_Spm: 58000000.0
+      current_A: 10.0
+      max_current_A: 20.0
+      voltage_limit_V: null
+      wire_radius_m: 0.003
+      trace_width_m: null
+      trace_thickness_m: null
+      insulation_thickness_m: 0.0002
+    simulation:
+      engine: elmerfem
+      physics: magnetostatic_current_density
+      air_padding_m: 0.2
+      mesh_min_m: 0.003
+      mesh_max_m: 0.04
+      boundary_condition: magnetic_insulation
+      result_fields:
+      - B
+      - H
+      - J
+      evaluate_roi: true
+    files: {}
+  rf:
+    tx:
+      type: solenoid
+      f0_hz: 11500000.0
+      q_factor: 100.0
+      impedance_ohm: 50.0
+      pmax_w: null
+      s_params_file: null
+      match_network: null
+      files: {}
+    rx:
+      type: solenoid
+      f0_hz: 11500000.0
+      q_factor: 150.0
+      impedance_ohm: 50.0
+      pmax_w: null
+      s_params_file: null
+      match_network: null
+      files: {}
+    shielding: null
+  spectrometer:
+    model: RedPitaya-122
+    sampling_rate_hz: 122000000.0
+    bit_depth: 16
+    max_tx_freq_hz: 50000000.0
+    files: {}
+  console:
+    os: Linux
+    api: Python gRPC
+    pulseq_support: true
+    latency_ms: 3.0
+  recon_pipeline:
+    openmrd_version: '0.1'
+    metadata:
+      name: H-Type MRI
+      organization: DIY MRI
+      license: MIT
+      contributors:
+      - Researcher1
+      - Engineer1
+      created: '2026-01-01'
+      description: Parametric MRI scanner (SI units)
+    coordinate_system:
+      convention: RAS
+      units: SI
+      scanner_to_lab_transform:
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+      - 0
+      - 0
+      - 0
+      - 0
+      - 1
+    reconstruction_parameters:
+      algorithm: GRAPPA
+      acceleration_factor: 2
